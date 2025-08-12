@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Humayl Khan</title>
+    <!-- Load main CSS file from root -->
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Project-specific styles that won't conflict */
+        .projects-main {
+            padding: 2rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .drive-embed {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .instructions {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar - Matches other pages exactly -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">HK</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="project1.html" class="active">Projects</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="projects-main">
+        <header class="section-header">
+            <h1>My Projects</h1>
+            <p>Explore my data analysis and coding projects</p>
+        </header>
+        
+        <!-- Google Drive Embed -->
+        <section class="drive-embed-container fade-in">
+            <iframe src="https://drive.google.com/embeddedfolderview?id=1rzrIflcBIBHoRrEogOss-zVBjQc6Qy6r#grid" class="drive-embed"></iframe>
+        </section>
+        
+        <div class="instructions fade-in">
+            <h3>How to view my projects:</h3>
+            <ol>
+                <li>Click on any file to preview it</li>
+                <li>Use the toolbar at the top to download or open in a new tab</li>
+                <li>For Jupyter notebooks, click "Open with Google Colab" to run the code</li>
+            </ol>
+        </div>
+    </main>
+
+    <!-- Footer - Matches other pages -->
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Humayl Khan. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript - Same as other pages -->
+    <script src="../scripts/scripts.js"></script>
+    <script>
+        // Copyright year update
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Simple fade-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
