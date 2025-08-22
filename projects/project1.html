@@ -4,38 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Humayl Khan</title>
-    <!-- Load main CSS file from root -->
     <link rel="stylesheet" href="../styles/styles.css">
-    <!-- Load Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Project-specific styles that won't conflict */
         .projects-main {
-            padding: 2rem 1.5rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
         
-        .drive-embed {
-            width: 100%;
-            height: 60px;
-            border: none;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
-        .instructions {
+        .project-card {
             background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #f39c12;
+        }
+        
+        .project-content {
             padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #6a11cb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #4d0b9a;
+        }
+        
+        .btn-secondary {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #e67e22;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - Matches other pages exactly -->
+    <!-- Navigation Bar -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="../index.html" class="nav-logo">HK</a>
@@ -54,42 +96,87 @@
     <!-- Main Content -->
     <main class="projects-main">
         <header class="section-header">
-            <h1>My Projects</h1>
-            <p>Explore my data analysis and coding projects using the Pandas and NumPy libraries!</p>
+            <h1>My Data Projects</h1>
+            <p>Explore my data analysis and machine learning projects using the Pandas module!</p>
         </header>
         
-        <!-- Google Drive Embed -->
-        <section class="drive-embed-container fade-in">
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1rzrIflcBIBHoRrEogOss-zVBjQc6Qy6r#grid" class="drive-embed"></iframe>
-        </section>
-        
-        <div class="instructions fade-in">
-            <h3>How to view my projects:</h3>
-            <ol>
-                <li>Click on any file to preview it</li>
-                <li>Use the toolbar at the top to download or open in a new tab</li>
-                <li>For Jupyter notebooks, click "Open with Google Colab" to run the code</li>
-            </ol>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card fade-in">
+                
+                <div class="project-content">
+                    <h3>Exoplanet Detection with Fourier Transform and Oversampling</h3>
+                    <p>To better capture periodic patterns in the stellar light curves, I implemented a Fast Fourier Transform (FFT). This mathematical technique converts time-series data into the frequency domain, highlighting hidden features and improving signal detection. I created a custom fast_fourier_transform() function and applied it across both the training and testing datasets.</p>
+                    <div class="project-links">
+                        <a href="https://colab.research.google.com/drive/18WW0_zJVhUUdMRNXZJRyFZuDYqGrpMyD?usp=sharing" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-python"></i> Open in Colab
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card fade-in">
+                
+                <div class="project-content">
+                    <h3>Data Exploration with Pandas/Slicing and Visualization</h3>
+                    <p>In this project, I expanded on data visualization (boxplots) by learning how to slice Pandas DataFrames to extract specific rows, columns, and subsets. Slicing is crucial for cleaning, filtering, and preparing datasets for analysis. This work highlights practical skills in data manipulation and preprocessing, forming the foundation for deeper data analysis and machine learning.</p>
+                    <div class="project-links">
+                        <a href="https://colab.research.google.com/drive/18WW0_zJVhUUdMRNXZJRyFZuDYqGrpMyD?usp=sharing" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-python"></i> Open in Colab
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card fade-in">
+                
+                <div class="project-content">
+                    <h3>Meteorite Landings - Histogram</h3>
+                    <p>In this project, I analyzed the Meteorite Landings dataset by creating histograms to visualize the distribution of meteorite masses and locations. Histograms helped reveal patterns such as the frequency of small vs. large meteorite landings and provided insights into the skewed distribution of the data. This project demonstrates skills in data visualization, exploratory data analysis (EDA), and interpreting real-world datasets using Python.</p>
+                    <div class="project-links">
+                        <a href="https://colab.research.google.com/drive/1qRCQ-1s3SohTLpjpZxgHCck3HKZoX94T?usp=sharing" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-python"></i> Open in Colab
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card fade-in">
+                
+                <div class="project-content">
+                    <h3>Pulsar Star Classification</h3>
+                    <p>Pulsars are rare neutron stars that emit detectable radio signals. Using the HTRU2 dataset, I trained an XGBoost Classifier on 8 signal-based features (statistics from pulse profiles and DM-SNR curves). Since pulsar examples are a minority class, I addressed the class imbalance to improve detection accuracy.</p>
+                    <div class="project-links">
+                        <a href="https://colab.research.google.com/drive/1GdMQ71ZVhHIWJlW2AvjQLQlhyOhYr_zH?usp=sharing" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-python"></i> Open in Colab
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <!-- Footer - Matches other pages -->
+    <!-- Footer -->
     <footer class="site-footer">
         <p>&copy; <span id="year"></span> Humayl Khan. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript - Same as other pages -->
     <script src="../scripts/scripts.js"></script>
     <script>
-        // Copyright year update
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Simple fade-in animation
+        // Simple animation
         document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
+            const cards = document.querySelectorAll('.fade-in');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
             });
         });
     </script>
