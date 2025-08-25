@@ -18,24 +18,26 @@
             color: #2c3e50;
             line-height: 1.6;
             min-height: 100vh;
-            padding-top: 70px; /* Space for fixed nav */
         }
         
-        /* Improved Navigation */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar - Always Visible */
         .main-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             background: #2c3e50;
             color: white;
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            height: 70px;
         }
         
         .nav-logo {
@@ -47,7 +49,7 @@
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.8rem;
         }
         
         .nav-links a {
@@ -55,30 +57,13 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 4px;
         }
         
         .nav-links a:hover, .nav-links a.active {
             color: #f39c12;
             background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
         }
         
         /* Header */
@@ -148,7 +133,6 @@
             transform: translateY(-2px);
         }
         
-        /* Main Content */
         .main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -159,6 +143,11 @@
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -377,56 +366,16 @@
             text-decoration: underline;
         }
         
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 60px;
-            }
-            
+        @media (max-width: 480px) {
             .main-nav {
-                padding: 0.8rem 1.5rem;
-                height: 60px;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
             }
             
             .nav-links {
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: #2c3e50;
-                flex-direction: column;
-                padding: 1rem;
-                gap: 0.5rem;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-            
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .nav-links a {
-                display: block;
-                padding: 1rem;
-                border-radius: 4px;
-                text-align: center;
-            }
-            
-            .nav-links a:hover {
-                background: rgba(255, 255, 255, 0.1);
-            }
-            
-            .nav-toggle {
-                display: block;
-            }
-            
-            .header-content {
-                padding: 0 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             h1 {
@@ -447,22 +396,24 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .resume-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Improved Navigation -->
+    <!-- Navigation Bar - Always Visible -->
     <nav class="main-nav">
         <a href="index.html" class="nav-logo">HK</a>
-        <div class="nav-links" id="navLinks">
+        <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html" class="active">About</a>
             <a href="projects/project1.html">Projects</a>
             <a href="index.html#contact">Contact</a>
         </div>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
     </nav>
 
     <header>
@@ -487,7 +438,20 @@
         </div>
     </header>
 
-  
+    <div class="container">
+        <div class="resume-section">
+            <h2><i class="fas fa-file-pdf"></i> My Resume</h2>
+            <p>View my resume directly in your browser or download it for later reference.</p>
+            <button class="resume-btn" id="viewResumeBtn">
+                <i class="fas fa-external-link-alt"></i> View Resume
+            </button>
+            
+            <hr class="divider">
+            
+            <div class="trouble-viewing">
+                <p><strong>Having trouble viewing?</strong> <a href="Humayl Khan - Resume (2025-2026).pdf" class="download-link" download>Download the PDF directly</a></p>
+            </div>
+        </div>
 
         <div class="main-content">
             <div class="card">
@@ -580,8 +544,6 @@
         const resumeModal = document.getElementById('resumeModal');
         const closeModal = document.getElementById('closeModal');
         const pdfViewer = document.getElementById('pdfViewer');
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
         
         // PDF file path - UPDATE THIS TO YOUR ACTUAL PDF PATH
         const pdfFilePath = 'Humayl Khan - Resume (2025-2026).pdf';
@@ -589,29 +551,6 @@
         // Set PDF viewer source
         function setPdfSource() {
             pdfViewer.src = pdfFilePath + '#view=FitH';
-        }
-        
-        // Toggle mobile navigation
-        function toggleNav() {
-            navLinks.classList.toggle('active');
-            
-            // Change icon based on menu state
-            const icon = navToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        }
-        
-        // Close mobile nav when clicking on a link
-        function closeMobileNav() {
-            navLinks.classList.remove('active');
-            const icon = navToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
         }
         
         // Event listeners
@@ -634,28 +573,10 @@
             }
         });
         
-        // Mobile nav toggle
-        navToggle.addEventListener('click', toggleNav);
-        
-        // Close mobile nav when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMobileNav);
-        });
-        
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year for copyright
             document.querySelector('footer p').innerHTML = `&copy; ${new Date().getFullYear()} Humayl Khan. All rights reserved.`;
-            
-            // Close mobile nav if screen is resized to desktop size
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    navLinks.classList.remove('active');
-                    const icon = navToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
         });
     </script>
 </body>
